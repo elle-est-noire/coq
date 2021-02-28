@@ -90,6 +90,17 @@ Proof. simpl. reflexivity. Qed.
 Check (negb true).
 Check negb.
 
+Definition xorb (b1:bool) (b2:bool) : bool :=
+  andb (negb (andb b1 b2)) (orb b1 b2).
+Example test_xor1: (xorb true true) = false.
+Proof. simpl. reflexivity. Qed.
+Example test_xor2: (xorb false true) = true.
+Proof. simpl. reflexivity. Qed.
+Example test_xor3: (xorb true false) = true.
+Proof. simpl. reflexivity. Qed.
+Example test_xor4: (xorb false false) = false.
+Proof. simpl. reflexivity. Qed.
+
 Module Playground1.
 
 Inductive mynat: Type :=
@@ -194,7 +205,7 @@ Fixpoint ble_nat (n m : mynat) : bool :=
       | S m' => ble_nat n' m'
       end
   end.
-Fixpoint blt_nat (n m : mynat) : bool :=
+Definition blt_nat (n m : mynat) : bool :=
  andb (ble_nat n m) (negb (beq_nat n m)).
 
 Example test_blt_nat1: (blt_nat (S (S O)) (S (S O))) = false.

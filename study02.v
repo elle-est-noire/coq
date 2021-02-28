@@ -464,6 +464,9 @@ End Dictionary.
 End NatList.
 
 Definition beq_nat_sym:=NatList.beq_nat_sym.
+Definition oddb:=NatList.oddb.
+Definition evenb:=NatList.evenb.
+Definition beq_refl:=NatList.Dictionary.beq_refl.
 
 
  

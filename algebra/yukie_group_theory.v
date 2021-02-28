@@ -36,11 +36,26 @@ Section Group.
   Axiom associative_law :
     forall x y z, x ** (y ** z) = (x ** y) ** z.
   
+  Theorem right_law : 
+    forall a b x, a = b -> a ** x = b ** x.
+  Proof. 
+    intros a b x H. 
+    rewrite H.
+    reflexivity.
+  Qed.
+  Theorem left_law : 
+    forall a b x, a = b -> x ** a = x ** b.
+  Proof. 
+    intros a b x H. 
+    rewrite H.
+    reflexivity.
+  Qed.
   (* 暗黙の裏公理。両辺にxを掛ける *)
-  Axiom right_law :
+  (*Axiom right_law :
     forall a b x, a = b -> a ** x = b ** x.
   Axiom left_law :
     forall a b x, a = b -> x ** a = x ** b.
+  *)
   
   (* 例題 2.1.7 *)
   Goal forall x y z w : G,
